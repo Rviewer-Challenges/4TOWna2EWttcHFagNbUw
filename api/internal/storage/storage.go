@@ -73,7 +73,7 @@ func (storage *Storage) GetNewsDiarioAS(notices *[]models.Notice) error {
 
 		var media string
 		if len(item.Enclosures) > 0 {
-			media = item.Enclosures[1].URL
+			media = item.Enclosures[0].URL
 		}
 
 		notice := models.Notice{
