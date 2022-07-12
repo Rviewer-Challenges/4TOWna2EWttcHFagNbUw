@@ -35,6 +35,11 @@ func (storage *Storage) GetNewsESPN(notices *[]models.Notice) error {
 	fp := gofeed.NewParser()
 	feed, _ := fp.ParseURL(storage.espn)
 
+	provider := models.Provider{
+		Id:   1,
+		Name: "ESPN",
+	}
+
 	for _, item := range feed.Items {
 
 		var media string
@@ -50,6 +55,7 @@ func (storage *Storage) GetNewsESPN(notices *[]models.Notice) error {
 			Author:          "ESPN",
 			Description:     item.Description,
 			Media:           media,
+			Provider:        provider,
 		}
 		*notices = append(*notices, notice)
 	}
@@ -60,6 +66,11 @@ func (storage *Storage) GetNewsESPN(notices *[]models.Notice) error {
 func (storage *Storage) GetNewsDiarioAS(notices *[]models.Notice) error {
 	fp := gofeed.NewParser()
 	feed, _ := fp.ParseURL(storage.diarioAS)
+
+	provider := models.Provider{
+		Id:   2,
+		Name: "Diario AS",
+	}
 
 	for _, item := range feed.Items {
 		var author string
@@ -80,10 +91,11 @@ func (storage *Storage) GetNewsDiarioAS(notices *[]models.Notice) error {
 			Title:           item.Title,
 			Link:            item.Link,
 			Author:          author,
-			Description:     item.Content,
+			Description:     item.Description,
 			PublicationDate: item.Published,
 			Categories:      categories,
 			Media:           media,
+			Provider:        provider,
 		}
 
 		*notices = append(*notices, notice)
@@ -94,6 +106,11 @@ func (storage *Storage) GetNewsDiarioAS(notices *[]models.Notice) error {
 func (storage *Storage) GetNewsMarca(notices *[]models.Notice) error {
 	fp := gofeed.NewParser()
 	feed, _ := fp.ParseURL(storage.marca)
+
+	provider := models.Provider{
+		Id:   3,
+		Name: "Marca",
+	}
 
 	for _, item := range feed.Items {
 
@@ -118,6 +135,7 @@ func (storage *Storage) GetNewsMarca(notices *[]models.Notice) error {
 			Categories:      categories,
 			PublicationDate: item.Published,
 			Media:           media,
+			Provider:        provider,
 		}
 
 		*notices = append(*notices, notice)
@@ -128,6 +146,11 @@ func (storage *Storage) GetNewsMarca(notices *[]models.Notice) error {
 func (storage *Storage) GetNewsNYTimes(notices *[]models.Notice) error {
 	fp := gofeed.NewParser()
 	feed, _ := fp.ParseURL(storage.nyTimes)
+
+	provider := models.Provider{
+		Id:   4,
+		Name: "NY Times",
+	}
 
 	for _, item := range feed.Items {
 
@@ -152,6 +175,7 @@ func (storage *Storage) GetNewsNYTimes(notices *[]models.Notice) error {
 			PublicationDate: item.Published,
 			Categories:      categories,
 			Media:           media,
+			Provider:        provider,
 		}
 
 		*notices = append(*notices, notice)
@@ -163,6 +187,11 @@ func (storage *Storage) GetNewsNYTimes(notices *[]models.Notice) error {
 func (storage *Storage) GetNewsFoxSports(notices *[]models.Notice) error {
 	fp := gofeed.NewParser()
 	feed, _ := fp.ParseURL(storage.foxSports)
+
+	provider := models.Provider{
+		Id:   5,
+		Name: "Fox Sports",
+	}
 
 	for _, item := range feed.Items {
 
@@ -182,6 +211,7 @@ func (storage *Storage) GetNewsFoxSports(notices *[]models.Notice) error {
 			PublicationDate: item.Published,
 			Media:           media,
 			Author:          "Fox Sports",
+			Provider:        provider,
 		}
 
 		*notices = append(*notices, notice)
@@ -192,6 +222,11 @@ func (storage *Storage) GetNewsFoxSports(notices *[]models.Notice) error {
 func (storage *Storage) GetNewsYahoo(notices *[]models.Notice) error {
 	fp := gofeed.NewParser()
 	feed, _ := fp.ParseURL(storage.yahooSports)
+
+	provider := models.Provider{
+		Id:   6,
+		Name: "Yahoo Sports",
+	}
 
 	for _, item := range feed.Items {
 		var author string
@@ -209,6 +244,7 @@ func (storage *Storage) GetNewsYahoo(notices *[]models.Notice) error {
 			PublicationDate: item.Published,
 			Link:            item.Link,
 			Categories:      categories,
+			Provider:        provider,
 		}
 
 		*notices = append(*notices, notice)
@@ -219,6 +255,11 @@ func (storage *Storage) GetNewsYahoo(notices *[]models.Notice) error {
 func (storage *Storage) GetNews101GreatGoals(notices *[]models.Notice) error {
 	fp := gofeed.NewParser()
 	feed, _ := fp.ParseURL(storage.greatGoals101)
+
+	provider := models.Provider{
+		Id:   7,
+		Name: "101 Great Goals",
+	}
 
 	for _, item := range feed.Items {
 		var author string
@@ -232,6 +273,7 @@ func (storage *Storage) GetNews101GreatGoals(notices *[]models.Notice) error {
 			PublicationDate: item.Published,
 			Author:          author,
 			Description:     item.Description,
+			Provider:        provider,
 		}
 
 		*notices = append(*notices, notice)
@@ -242,6 +284,11 @@ func (storage *Storage) GetNews101GreatGoals(notices *[]models.Notice) error {
 func (storage *Storage) Get90Min(notices *[]models.Notice) error {
 	fp := gofeed.NewParser()
 	feed, _ := fp.ParseURL(storage.ninetyMin)
+
+	provider := models.Provider{
+		Id:   8,
+		Name: "90 min",
+	}
 
 	for _, item := range feed.Items {
 		var media string
@@ -256,6 +303,7 @@ func (storage *Storage) Get90Min(notices *[]models.Notice) error {
 			Description:     item.Description,
 			PublicationDate: item.Published,
 			Media:           media,
+			Provider:        provider,
 		}
 
 		*notices = append(*notices, notice)

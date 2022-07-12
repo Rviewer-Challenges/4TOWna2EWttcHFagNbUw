@@ -2,7 +2,6 @@ package service
 
 import (
 	"context"
-	"log"
 
 	"github.com/Rviewer-Challenges/4TOWna2EWttcHFagNbUw/api/internal/models"
 	"github.com/Rviewer-Challenges/4TOWna2EWttcHFagNbUw/api/internal/storage"
@@ -21,43 +20,97 @@ func New(storage *storage.Storage) *Feed {
 func (feed *Feed) GetNews(ctx context.Context) ([]models.Notice, error) {
 	notices := []models.Notice{}
 
-	if err := feed.News.GetNewsESPN(&notices); err != nil {
-		log.Fatal("error getting espn news", err)
-		return nil, err
+	errc := make(chan error, 8)
+
+	go func() {
+		err := feed.News.GetNewsESPN(&notices)
+		if err != nil {
+			errc <- err
+			return
+		}
+
+		errc <- nil
+	}()
+
+	go func() {
+		err := feed.News.GetNewsDiarioAS(&notices)
+		if err != nil {
+			errc <- err
+			return
+		}
+
+		errc <- nil
+	}()
+
+	go func() {
+		err := feed.News.GetNewsMarca(&notices)
+		if err != nil {
+			errc <- err
+			return
+		}
+
+		errc <- nil
+	}()
+
+	go func() {
+		err := feed.News.GetNewsNYTimes(&notices)
+		if err != nil {
+			errc <- err
+			return
+		}
+
+		errc <- nil
+	}()
+
+	go func() {
+		err := feed.News.GetNewsFoxSports(&notices)
+		if err != nil {
+			errc <- err
+			return
+		}
+
+		errc <- nil
+	}()
+
+	go func() {
+		err := feed.News.GetNewsYahoo(&notices)
+		if err != nil {
+			errc <- err
+			return
+		}
+
+		errc <- nil
+	}()
+
+	go func() {
+		err := feed.News.GetNews101GreatGoals(&notices)
+		if err != nil {
+			errc <- err
+			return
+		}
+
+		errc <- nil
+	}()
+
+	go func() {
+		err := feed.News.Get90Min(&notices)
+		if err != nil {
+			errc <- err
+			return
+		}
+
+		errc <- nil
+	}()
+
+	var err error
+	for i := 0; i < 8; i++ {
+		e := <-errc
+		if e != nil {
+			err = e
+		}
 	}
 
-	if err := feed.News.GetNewsDiarioAS(&notices); err != nil {
-		log.Fatal("error getting diarioAS news", err)
-		return nil, err
-	}
-
-	if err := feed.News.GetNewsMarca(&notices); err != nil {
-		log.Fatal("error getting marca news", err)
-		return nil, err
-	}
-
-	if err := feed.News.GetNewsNYTimes(&notices); err != nil {
-		log.Fatal("error getting NYTimes news", err)
-		return nil, err
-	}
-
-	if err := feed.News.GetNewsFoxSports(&notices); err != nil {
-		log.Fatal("error getting fox sports news", err)
-		return nil, err
-	}
-
-	if err := feed.News.GetNewsYahoo(&notices); err != nil {
-		log.Fatal("error getting yahoo sports news", err)
-		return nil, err
-	}
-
-	if err := feed.News.GetNews101GreatGoals(&notices); err != nil {
-		log.Fatal("error getting 101 great goals news", err)
-		return nil, err
-	}
-
-	if err := feed.News.Get90Min(&notices); err != nil {
-		log.Fatal("error getting 90 min news", err)
+	if err != nil {
 		return nil, err
 	}
 

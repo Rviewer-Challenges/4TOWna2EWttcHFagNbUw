@@ -20,7 +20,7 @@ type WebServer struct {
 
 // StartServer listens and servers this microservice
 func (ws *WebServer) StartServer() {
-	var httpAddr = flag.String("http", ":2323", "http listen address")
+	var httpAddr = flag.String("http", ":8081", "http listen address")
 
 	flag.Parse()
 
