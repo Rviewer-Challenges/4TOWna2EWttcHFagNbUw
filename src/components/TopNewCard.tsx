@@ -12,7 +12,7 @@ export const TopNewCard = ({ notice }:Props) => {
   const descriptionFormatted = getShortedDescription(description)
 
   return (
-    <div className="flex flex-1 rounded-md">
+    <div className="flex flex-1 rounded-md py-5">
       <img src={media} alt={title} className="rounded-l-lg w-1/2"/>
       <div className="flex flex-1 flex-col ml-2">
         <h3 className="text-3xl font-semibold">{title.toUpperCase()}</h3>
