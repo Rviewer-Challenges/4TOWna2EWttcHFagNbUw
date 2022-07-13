@@ -1,9 +1,10 @@
 export interface Notice {
-  title:string
-  link:string
-  publicationDate:string
-  author:string
-  category?:string
-  description:string
-  media: string[]
+    title: string;
+    author: string;
+    providerID: number;
+    description: string;
+    publicationDate: string;
+    categories: string[];
+    media: string;
+    link: string;
 }

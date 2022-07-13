@@ -5,20 +5,31 @@ interface Props {
   notice: Notice
 }
 
+const MAX_CHARACTERS = 180
+
+export const getShortedDescription = (description: string) => {
+  return description.length > MAX_CHARACTERS
+    ? (description.substring(0, description.lastIndexOf(' ', MAX_CHARACTERS)) + ' ...')
+    : description
+}
+
 export const NewCard = ({ notice }:Props) => {
-  const { title, author, publicationDate, media } = notice
-  const image = media[0]
+  const { title, author, publicationDate, media, description } = notice
   const publicationDateFormatted = moment(publicationDate).startOf('hour').fromNow()
+  const descriptionFormatted = getShortedDescription(description)
 
   return (
-    <div className="flex w-64 h-64 mx-2 justify-between flex-col rounded-md">
-      <div>
-        <img className="rounded-t-lg" src={image} alt={`${title}_image`} width={270} height={176}/>
-        <h3 className="font-semibold mt-1">{title.toUpperCase()}</h3>
-      </div>
-      <div className="flex justify-between mt-6 mx-1">
-        <span className="text-xs">{author}</span>
-        <span className="text-xs">{publicationDateFormatted}</span>
+    <div className="flex flex-row rounded-md my-5">
+      <img src={media} className='rounded-md flex w-72 h-44'/>
+      <div className='flex flex-1 ml-1 flex-col px-3'>
+        <h2 className='text-2xl font-semibold'>{title}</h2>
+        <div className='flex flex-row items-start mb-2'>
+          <span className='text-sm '>{author}</span>
+          <span className='text-sm ml-2 text-orange-400'>{publicationDateFormatted}</span>
+        </div>
+        <div className='h-7'>
+          <p className='pr-2 break-words'>{descriptionFormatted}</p>
+        </div>
       </div>
     </div>
   )

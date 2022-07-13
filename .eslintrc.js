@@ -3,7 +3,6 @@ const RULES = {
   WARN: 'warn',
   ERROR: 'error'
 }
-
 module.exports = {
   env: {
     browser: true,
@@ -28,6 +27,8 @@ module.exports = {
   ],
   rules: {
     'react/react-in-jsx-scope': RULES.OFF,
+    'react/prop-types': RULES.OFF,
+    'no-undef': RULES.OFF,
     indent: ['error', 2]
   }
 }
