@@ -1,10 +1,11 @@
 export interface Notice {
-    title: string;
-    author: string;
-    providerID: number;
-    description: string;
-    publicationDate: string;
-    categories: string[];
-    media: string;
-    link: string;
+    Title: string;
+    Author: string;
+    ProviderID: number;
+    Description: string;
+    PublicationDate: string;
+    Categories: string[] | null;
+    Media: string;
+    Link: string;
+    Date: Date;
 }
