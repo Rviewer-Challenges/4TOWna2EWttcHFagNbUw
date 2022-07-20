@@ -9,17 +9,17 @@ interface Props {
 
 export const Feed = ({ notices }:Props) => {
   return (
-    <div className="flex flex-1 flex-col divide-y">
-      <div>
+    <div className="flex flex-col divide-y justify-center">
+      <section>
         <SectionTitle title={'Today\'s new'}/>
-        <TopNewCard notice={notices[0]}/>
-      </div>
-      <div>
+        <TopNewCard notice={notices[1]}/>
+      </section>
+      <section>
         <SectionTitle title='Latest News'/>
-        <div className='columns-1 w-3/4'>
+        <div>
           {notices.map((value, index) => <NewCard notice={value} key={index}/>)}
         </div>
-      </div>
+      </section>
     </div>
   )
 }

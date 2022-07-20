@@ -19,17 +19,15 @@ export const NewCard = ({ notice }:Props) => {
   const descriptionFormatted = getShortedDescription(Description)
 
   return (
-    <div className="flex flex-row rounded-md my-5">
-      <img src={Media} className='rounded-md flex w-72 h-44'/>
-      <div className='flex flex-1 ml-1 flex-col px-3'>
-        <h2 className='text-2xl font-semibold'>{Title}</h2>
+    <div className='flex rounded-md my-8 max-w-3xl border border-[#141946]'>
+      <img src={Media} alt={Title} className='rounded-md h-36 w-auto'/>
+      <div className='ml-2'>
+        <h2 className='text-xl font-semibold'>{Title}</h2>
         <div className='flex flex-row items-start mb-2'>
-          <span className='text-sm '>{Author}</span>
-          <span className='text-sm ml-2 text-orange-400'>{publicationDateFormatted}</span>
+          <span className='text-sm'>{Author}</span>
+          <span className='text-sm ml-2 text-[#FF0000]'>{publicationDateFormatted}</span>
         </div>
-        <div className='h-7'>
-          <p className='pr-2 break-words'>{descriptionFormatted}</p>
-        </div>
+        <p>{descriptionFormatted}</p>
       </div>
     </div>
   )
