@@ -19,7 +19,7 @@ export const Home = () => {
         <TopNewCard notice={notices[1]}/>
       </section>
       <section>
-        <SectionTitle title='Latest News'/>
+        <SectionTitle title='All the latest'/>
         <span className='text-sm text-[#666]'>The latest news of the international soccer</span>
         <div>
           {notices.map((value, index) => <NewCard notice={value} key={index}/>)}

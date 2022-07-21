@@ -13,7 +13,7 @@ export const TopNewCard = ({ notice }:Props) => {
 
   return (
     <div className="flex flex-1 rounded-md py-5 max-w-7xl sm:flex-row flex-col">
-      <img src={Media} alt={Title} width={500} height={500} className="rounded-lg sm:max-w-sm w-full p-2 "/>
+      <img src={Media} alt={Title} width={500} height={500} className="rounded-md sm:max-w-sm w-full p-2 "/>
       <div className="flex flex-1 flex-col ml-2 sm:ml-0">
         <h3 className="text-3xl font-semibold">{Title}</h3>
         <div className='flex flex-row items-start mt-1'>

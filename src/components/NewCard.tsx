@@ -20,7 +20,7 @@ export const NewCard = ({ notice }:Props) => {
 
   return (
     <article className='flex rounded-md my-8 max-w-4xl sm:flex-row flex-col'>
-      <img src={Media} alt={Title} className='rounded-md sm:max-w-sm w-full bg-slate-50'/>
+      <img src={Media} alt={Title} className='rounded-md sm:max-w-sm w-full sm:max-h-52 bg-slate-50'/>
       <div className='p-1 ml-0 sm:ml-5'>
         <header className='text-2xl font-semibold mb-2'>{Title}</header>
         <div className='mb-5'>
