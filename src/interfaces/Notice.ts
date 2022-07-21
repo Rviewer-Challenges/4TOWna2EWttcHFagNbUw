@@ -1,4 +1,5 @@
 export interface Notice {
+    Id: number;
     Title: string;
     Author: string;
     ProviderID: number;

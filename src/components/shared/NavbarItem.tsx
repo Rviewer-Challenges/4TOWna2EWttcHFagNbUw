@@ -1,15 +1,18 @@
-import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core'
+import { Link } from 'wouter'
+import { Route } from '../../interfaces/Route'
 import { Icon } from './Icon'
 
 interface Props {
-  prefix: IconPrefix
-  icon: IconName
-  label: string
+  route:Route
   showNavbar: boolean
 }
 
-export const NavbarItem = ({ prefix, icon, label, showNavbar }:Props) => {
+export const NavbarItem = ({ route, showNavbar }:Props) => {
+  const { prefix, icon, label, path } = route
+
   return (
-    <li className='rounded-md font-semibold text-lg my-2'>{showNavbar && <Icon prefix={prefix} name={icon}/>}{label}</li>
+    <Link href={path}>
+      <li className='rounded-md font-semibold text-lg my-2 cursor-pointer'>{showNavbar && <Icon prefix={prefix} name={icon}/>}{label}</li>
+    </Link>
   )
 }

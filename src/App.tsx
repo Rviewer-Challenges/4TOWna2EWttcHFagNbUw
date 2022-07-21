@@ -1,12 +1,12 @@
 import { Navbar } from './components/shared/Navbar'
-import { Home } from './pages/Home'
+import { Navigator } from './navigator/Navigator'
 
 function App () {
   return (
     <div className='flex flex-1 flex-col'>
       <Navbar/>
       <div className="flex justify-center items-center">
-        <Home/>
+        <Navigator/>
       </div>
     </div>
   )
