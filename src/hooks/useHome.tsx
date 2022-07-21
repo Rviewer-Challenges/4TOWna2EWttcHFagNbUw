@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Notice } from '../interfaces/Notice'
 import { getNews } from '../services/api/news'
-import { getTimeFromTimeZone } from '../utils/formatDate'
 
 export const useHome = () => {
   const [notices, setNotices] = useState<Notice[]>([])
@@ -11,13 +10,9 @@ export const useHome = () => {
     // adjust time to the user's time zone
     notices = notices.map((notice) => {
       const { PublicationDate } = notice
-      const dateFromTimeZone = getTimeFromTimeZone(PublicationDate)
-      const date = new Date(dateFromTimeZone)
-
       return {
         ...notice,
-        PublicationDate: dateFromTimeZone,
-        Date: date
+        Date: new Date(PublicationDate)
       }
     })
 
