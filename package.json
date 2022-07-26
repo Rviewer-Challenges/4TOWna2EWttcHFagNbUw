@@ -8,6 +8,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
+    "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -22,6 +23,8 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4",
     "wouter": "^2.8.0-alpha.2"
@@ -52,6 +55,9 @@
     ]
   },
   "devDependencies": {
+    "@types/react-redux": "^7.1.24",
+    "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
     "autoprefixer": "^10.4.7",

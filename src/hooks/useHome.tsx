@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Notice } from '../interfaces/Notice'
-import { getNews } from '../services/api/news'
+import { useAppSelector } from '../storage/redux/hooks'
 
 export const useHome = () => {
+  const { notices: noticesSelector } = useAppSelector(selector => selector.noticeReducer)
+
   const [notices, setNotices] = useState<Notice[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -26,12 +28,10 @@ export const useHome = () => {
   }
 
   useEffect(() => {
-    getNews().then(news => {
-      const noticesFormatted = formatNotices(news)
-      setNotices(noticesFormatted)
-      setIsLoading(false)
-    })
-  }, [])
+    const noticesFormatted = formatNotices(noticesSelector)
+    setNotices(noticesFormatted)
+    setIsLoading(false)
+  }, [noticesSelector])
 
   return {
     notices,
