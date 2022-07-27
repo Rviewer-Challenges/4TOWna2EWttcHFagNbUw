@@ -1,40 +1,24 @@
-import { useEffect, useState } from 'react'
-import { Notice } from '../interfaces/Notice'
-import { useAppSelector } from '../storage/redux/hooks'
+import { useContext, useEffect } from 'react'
+import { Context } from '../context/Context'
+import { InsideGoalContext } from '../context/InsideGoalContext'
+import { useNavigate } from 'react-router-dom'
 
 export const useHome = () => {
-  const { notices: noticesSelector } = useAppSelector(selector => selector.noticeReducer)
+  const { notices, isLoading, loadNotices } = useContext(Context) as InsideGoalContext
 
-  const [notices, setNotices] = useState<Notice[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const navigate = useNavigate()
 
-  let id = 0
-
-  const formatNotices = (notices: Notice[]) => {
-    // adjust time to the user's time zone
-    notices = notices.map((notice) => {
-      const { PublicationDate } = notice
-      return {
-        ...notice,
-        Id: id++,
-        Date: new Date(PublicationDate)
-      }
-    })
-
-    // sort in descending order
-    notices = notices.slice().sort((a, b) => b.Date.getTime() - a.Date.getTime())
-
-    return notices
+  const goToNoticeDetails = (title:string) => {
+    navigate(`/notice/${title}`)
   }
 
   useEffect(() => {
-    const noticesFormatted = formatNotices(noticesSelector)
-    setNotices(noticesFormatted)
-    setIsLoading(false)
-  }, [noticesSelector])
+    loadNotices()
+  }, [])
 
   return {
     notices,
-    isLoading
+    isLoading,
+    goToNoticeDetails
   }
 }

@@ -5,5 +5,5 @@ export interface Route {
   prefix: IconPrefix
   icon: IconName
   label: string
-  component: () => JSX.Element
+  Component: () => JSX.Element
 }

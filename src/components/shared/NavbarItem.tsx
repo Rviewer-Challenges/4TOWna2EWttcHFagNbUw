@@ -1,4 +1,4 @@
-import { Link } from 'wouter'
+import { Link } from 'react-router-dom'
 import { Route } from '../../interfaces/Route'
 import { Icon } from './Icon'
 
@@ -11,7 +11,7 @@ export const NavbarItem = ({ route, showNavbar }:Props) => {
   const { prefix, icon, label, path } = route
 
   return (
-    <Link href={path}>
+    <Link to={path}>
       <li className='rounded-md font-semibold text-lg my-2 cursor-pointer'>{showNavbar && <Icon prefix={prefix} name={icon}/>}{label}</li>
     </Link>
   )
