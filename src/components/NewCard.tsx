@@ -1,5 +1,5 @@
-import moment from 'moment'
 import { Notice } from '../interfaces/Notice'
+import { NoticeReference } from './shared/NoticeReference'
 
 interface Props {
   notice: Notice
@@ -16,7 +16,6 @@ export const getShortedDescription = (description: string) => {
 
 export const NewCard = ({ notice, onClick }:Props) => {
   const { Title, Author, PublicationDate, Media, Description } = notice
-  const publicationDateFormatted = moment(PublicationDate).startOf('hour').fromNow()
   const descriptionFormatted = getShortedDescription(Description)
 
   return (
@@ -25,9 +24,7 @@ export const NewCard = ({ notice, onClick }:Props) => {
       <div className='p-1 ml-0 sm:ml-5'>
         <header className='text-2xl font-semibold mb-2'>{Title}</header>
         <div className='mb-5'>
-          <span className='text-[#666] text-sm'>{Author}</span>
-          <span className='mx-1 text-[#666] text-sm'>·</span>
-          <span className='text-[#666] text-sm'>{publicationDateFormatted}</span>
+          <NoticeReference author={Author} publicationDate={PublicationDate}/>
         </div>
         <p className='sm:block hidden'>{descriptionFormatted}</p>
       </div>
