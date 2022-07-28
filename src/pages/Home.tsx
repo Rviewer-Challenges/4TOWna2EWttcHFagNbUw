@@ -13,7 +13,7 @@ export const Home = () => {
   }
 
   return (
-    <div className='divide-y px-2'>
+    <div className='divide-y px-2 min-h-screen'>
       <section className='flex flex-col'>
         <SectionTitle title={'Today\'s new'}/>
         <TopNewCard notice={notices[0]} onClick={() => goToNoticeDetails(notices[0].Title)} handleSaveNotice={() => addNotice(notices[0])}/>

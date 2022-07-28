@@ -13,7 +13,7 @@ export const NoticeDetail = () => {
   if (notice !== undefined) {
     const { Title, Author, PublicationDate, Media, Description, Link } = notice
     return (
-      <div className='flex justify-center items-center flex-col max-w-5xl mx-3'>
+      <div className='flex items-center flex-col max-w-5xl mx-3 min-h-screen'>
         <h2 className='font-semibold text-4xl text-center mt-2'>{Title}</h2>
         <div className='mb-5 mt-1'>
           <NoticeReference author={Author} publicationDate={PublicationDate}/>

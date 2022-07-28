@@ -2,6 +2,7 @@ import startFirebase, { USER_COLLECTION } from './config'
 import { collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore'
 import { User } from '../../interfaces/User'
 import { Notice } from '../../interfaces/Notice'
+import { toast } from 'react-toastify'
 
 const database = startFirebase()
 const userCollection = collection(database, USER_COLLECTION)
@@ -35,6 +36,6 @@ export const addNoticeToUserList = ({ user, notice }: AddNoticeToUserListRequest
   if (!user.list.includes(notice)) {
     user.list = [...user.list, notice]
     const currentUserCollection = doc(database, USER_COLLECTION, user.id)
-    updateDoc(currentUserCollection, { list: user.list }).then(() => console.log('updated successfully'))
+    updateDoc(currentUserCollection, { list: user.list }).then(() => toast.success('Notice saved to My List')).catch(() => toast.error('Can not save the notice'))
   }
 }
