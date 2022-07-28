@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { Context } from '../context/Context'
 import { InsideGoalContext } from '../context/InsideGoalContext'
 import { useNavigate } from 'react-router-dom'
@@ -6,7 +6,7 @@ import { Notice } from '../interfaces/Notice'
 import { addNoticeToUserList } from '../services/firebase/noticeList'
 
 export const useHome = () => {
-  const { notices, isLoading, currentUser, loadNotices, loadUser } = useContext(Context) as InsideGoalContext
+  const { notices, currentUser } = useContext(Context) as InsideGoalContext
 
   const navigate = useNavigate()
 
@@ -24,14 +24,8 @@ export const useHome = () => {
     addNoticeToUserList({ user: currentUser, notice })
   }
 
-  useEffect(() => {
-    loadNotices()
-    loadUser()
-  }, [])
-
   return {
     notices,
-    isLoading,
     noticeToShow,
     goToNoticeDetails,
     addNotice,

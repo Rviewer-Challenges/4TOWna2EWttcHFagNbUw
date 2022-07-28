@@ -15,7 +15,6 @@ const USER_DEFAULT_ID = 'LUXaysGcsd1n9oScdhGB'
 
 const Provider = ({ children }: Props) => {
   const [notices, setNotices] = useState<Notice[]>([])
-  const [isLoading, setIsLoading] = useState(true)
   const [currentUser, setCurrentUser] = useState<User>({
     id: USER_DEFAULT_ID,
     email: 'spiderman@marvel.com',
@@ -39,20 +38,19 @@ const Provider = ({ children }: Props) => {
     return notices
   }
 
-  const loadUser = () => {
+  const loadUser = async () => {
     getUser(USER_DEFAULT_ID).then(user => setCurrentUser(user))
   }
 
-  const loadNotices = () => {
+  const loadNotices = async () => {
     getNews().then(notices => {
       const noticesFormatted = formatNotices(notices)
       setNotices(noticesFormatted)
-      setIsLoading(false)
     }).catch(error => console.log('error', error))
   }
 
   return (
-    <Context.Provider value={{ notices, isLoading, currentUser, loadNotices, loadUser }}>
+    <Context.Provider value={{ notices, currentUser, loadNotices, loadUser }}>
       {children}
     </Context.Provider>
   )

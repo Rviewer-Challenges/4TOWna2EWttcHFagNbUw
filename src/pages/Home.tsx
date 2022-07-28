@@ -4,13 +4,7 @@ import { TopNewCard } from '../components/TopNewCard'
 import { useHome } from '../hooks/useHome'
 
 export const Home = () => {
-  const { notices, isLoading, noticeToShow, goToNoticeDetails, addNotice, handleLoadMore } = useHome()
-
-  if (isLoading) {
-    return (
-      <div>Loading</div>
-    )
-  }
+  const { notices, noticeToShow, goToNoticeDetails, addNotice, handleLoadMore } = useHome()
 
   return (
     <div className='divide-y px-2 min-h-screen'>
