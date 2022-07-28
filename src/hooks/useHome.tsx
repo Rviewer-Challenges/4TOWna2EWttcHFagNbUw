@@ -3,7 +3,7 @@ import { Context } from '../context/Context'
 import { InsideGoalContext } from '../context/InsideGoalContext'
 import { useNavigate } from 'react-router-dom'
 import { Notice } from '../interfaces/Notice'
-import { addNoticeToUserList } from '../services/firebase/user'
+import { addNoticeToUserList } from '../services/firebase/noticeList'
 
 export const useHome = () => {
   const { notices, isLoading, currentUser, loadNotices, loadUser } = useContext(Context) as InsideGoalContext

@@ -5,8 +5,9 @@ import { NoticeReference } from './shared/NoticeReference'
 interface Props {
   notice: Notice
   onClick?: () => void
+  handleRemoveNotice?: () => void
 }
-export const NoticeMyList = ({ notice, onClick }:Props) => {
+export const NoticeMyList = ({ notice, onClick, handleRemoveNotice }:Props) => {
   const { Media, Title, Author, PublicationDate } = notice
 
   return (
@@ -19,9 +20,9 @@ export const NoticeMyList = ({ notice, onClick }:Props) => {
             <NoticeReference author={Author} publicationDate={PublicationDate}/>
           </div>
         </div>
-        <div className='ml-2'>
+        <button className='ml-2' onClick={handleRemoveNotice}>
           <Icon prefix='fas' name='trash'/>
-        </div>
+        </button>
       </div>
     </article>
   )

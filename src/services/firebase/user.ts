@@ -1,11 +1,6 @@
-import startFirebase, { USER_COLLECTION } from './config'
-import { collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore'
+import { database, userCollection, USER_COLLECTION } from './config'
+import { doc, getDoc, getDocs } from 'firebase/firestore'
 import { User } from '../../interfaces/User'
-import { Notice } from '../../interfaces/Notice'
-import { toast } from 'react-toastify'
-
-const database = startFirebase()
-const userCollection = collection(database, USER_COLLECTION)
 
 export const getUsers = () => {
   const response:Promise<User[]> = getDocs(userCollection).then(response => {
@@ -25,17 +20,4 @@ export const getUser = (id: string) => {
     return user
   })
   return response.then(user => user)
-}
-
-interface AddNoticeToUserListRequest {
-  user: User
-  notice: Notice
-}
-
-export const addNoticeToUserList = ({ user, notice }: AddNoticeToUserListRequest) => {
-  if (!user.list.includes(notice)) {
-    user.list = [...user.list, notice]
-    const currentUserCollection = doc(database, USER_COLLECTION, user.id)
-    updateDoc(currentUserCollection, { list: user.list }).then(() => toast.success('Notice saved to My List')).catch(() => toast.error('Can not save the notice'))
-  }
 }

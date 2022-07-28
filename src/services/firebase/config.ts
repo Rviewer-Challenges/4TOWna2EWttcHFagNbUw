@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
+import { collection, getFirestore } from 'firebase/firestore'
 
 export const USER_COLLECTION = 'users'
 
@@ -19,4 +19,5 @@ const startFirebase = () => {
   return getFirestore(app)
 }
 
-export default startFirebase
+export const database = startFirebase()
+export const userCollection = collection(database, USER_COLLECTION)
