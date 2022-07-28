@@ -29,7 +29,7 @@ export const NewCard = ({ notice, onClick, handleSaveNotice }:Props) => {
           <div className='mb-5'>
             <NoticeReference author={Author} publicationDate={PublicationDate}/>
           </div>
-          <p className='sm:block hidden'>{descriptionFormatted}</p>
+          {descriptionFormatted !== 'null' && <p className='sm:block hidden'>{descriptionFormatted}</p>}
         </div>
         <Bookmark onClick={handleSaveNotice}/>
       </div>
