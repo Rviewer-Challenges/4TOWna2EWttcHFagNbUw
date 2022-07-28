@@ -4,7 +4,7 @@ import { TopNewCard } from '../components/TopNewCard'
 import { useHome } from '../hooks/useHome'
 
 export const Home = () => {
-  const { notices, isLoading, goToNoticeDetails } = useHome()
+  const { notices, isLoading, goToNoticeDetails, addNotice } = useHome()
 
   if (isLoading) {
     return (
@@ -22,7 +22,13 @@ export const Home = () => {
         <SectionTitle title='All the latest'/>
         <span className='text-sm text-[#666]'>The latest news of the international soccer</span>
         <div>
-          {notices.slice(1, 6).map((value, index) => <NewCard notice={value} key={index} onClick={() => goToNoticeDetails(value.Title)}/>)}
+          {notices.slice(1, 6).map((value, index) => (
+            <NewCard
+              key={index}
+              notice={value}
+              onClick={() => goToNoticeDetails(value.Title)}
+              handleSaveNotice={() => addNotice(value)}/>
+          ))}
         </div>
       </section>
     </div>
