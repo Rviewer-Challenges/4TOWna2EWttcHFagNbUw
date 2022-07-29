@@ -1,14 +1,8 @@
-import { useContext } from 'react'
-import { useParams } from 'react-router-dom'
 import { NoticeReference } from '../components/shared/NoticeReference'
-import { Context } from '../context/Context'
-import { InsideGoalContext } from '../context/InsideGoalContext'
+import { useNoticeDetail } from '../hooks/useNoticeDetail'
 
 export const NoticeDetail = () => {
-  const { title } = useParams()
-  const { notices } = useContext(Context) as InsideGoalContext
-
-  const notice = notices.find(notice => notice.Title === title)
+  const { title, notice } = useNoticeDetail()
 
   if (notice !== undefined) {
     const { Title, Author, PublicationDate, Media, Description, Link } = notice
