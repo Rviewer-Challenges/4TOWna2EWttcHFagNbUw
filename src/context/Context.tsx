@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react'
+import { useDarkMode } from '../hooks/useDarkMode'
 import { Notice } from '../interfaces/Notice'
 import { User } from '../interfaces/User'
 import { getNews } from '../services/api/news'
@@ -22,6 +23,8 @@ const Provider = ({ children }: Props) => {
     provider: [],
     list: []
   })
+
+  const { theme, toggleMode } = useDarkMode()
 
   const formatNotices = (notices: Notice[]) => {
     // adjust time to the user's time zone
@@ -50,7 +53,7 @@ const Provider = ({ children }: Props) => {
   }
 
   return (
-    <Context.Provider value={{ notices, currentUser, loadNotices, loadUser }}>
+    <Context.Provider value={{ notices, currentUser, theme, toggleMode, loadNotices, loadUser }}>
       {children}
     </Context.Provider>
   )

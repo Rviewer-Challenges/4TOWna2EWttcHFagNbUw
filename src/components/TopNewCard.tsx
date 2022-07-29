@@ -18,7 +18,7 @@ export const TopNewCard = ({ notice, onClick, handleSaveNotice }:Props) => {
     <article className="flex flex-1 rounded-md py-5 max-w-7xl sm:flex-row flex-col">
       <img src={Media} alt={Title} width={500} height={500} className="rounded-md sm:max-w-sm w-full p-2 cursor-pointer" onClick={onClick}/>
       <div className="flex flex-1 flex-col ml-2 sm:ml-0 items-start">
-        <h3 className="text-3xl font-semibold">{Title}</h3>
+        <h3 className="text-3xl font-semibold cursor-pointer" onClick={onClick}>{Title}</h3>
         <div className='flex flex-row items-start mt-1'>
           <span>{Author}</span>
           <span className='mx-2'>·</span>

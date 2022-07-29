@@ -3,6 +3,7 @@ import { navbar } from '../../navigator/routes'
 import { Icon } from './Icon'
 import { Logo } from './Logo'
 import { NavbarItem } from './NavbarItem'
+import { ToogleThemeButton } from './ToogleThemeButton'
 
 export const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false)
@@ -26,6 +27,7 @@ export const Navbar = () => {
           {navbar.map((item, key) => <NavbarItem route={item} key={key} showNavbar={showNavbar}/>)}
         </ul>
       </div>
+      <ToogleThemeButton/>
     </nav>
   )
 }
