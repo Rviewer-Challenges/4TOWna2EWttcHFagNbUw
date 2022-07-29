@@ -12,7 +12,7 @@ export const NavbarItem = ({ route, showNavbar }:Props) => {
 
   return (
     <Link to={path}>
-      <li className='rounded-md font-semibold text-lg my-2 cursor-pointer'>{showNavbar && <Icon prefix={prefix} name={icon}/>}{label}</li>
+      <li className='rounded-md font-semibold text-lg my-2 cursor-pointer dark:text-white'>{showNavbar && <Icon prefix={prefix} name={icon}/>}{label}</li>
     </Link>
   )
 }

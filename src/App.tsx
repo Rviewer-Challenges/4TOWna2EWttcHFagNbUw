@@ -4,7 +4,9 @@ import { Loading } from './pages/Loading'
 function App () {
   return (
     <Provider>
-      <Loading/>
+      <div className='dark:bg-[#1a1a1a]'>
+        <Loading/>
+      </div>
     </Provider>
   )
 }

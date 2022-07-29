@@ -7,7 +7,7 @@ export const Home = () => {
   const { notices, noticeToShow, goToNoticeDetails, addNotice, handleLoadMore } = useHome()
 
   return (
-    <div className='divide-y px-2 min-h-screen'>
+    <div className='divide-y px-2 min-h-screen dark:divide-[#666]'>
       <section className='flex flex-col'>
         <SectionTitle title={'Today\'s new'}/>
         <TopNewCard notice={notices[0]} onClick={() => goToNoticeDetails(notices[0].Title)} handleSaveNotice={() => addNotice(notices[0])}/>

@@ -12,7 +12,7 @@ export const Navbar = () => {
   }
 
   return (
-    <nav className='md:flex justify-between items-center bg-white sticky top-0 z-20 py-2 px-5 border-b w-full'>
+    <nav className='md:flex justify-between items-center bg-white sticky top-0 z-20 py-2 px-5 border-b w-full dark:bg-[#1a1a1a] dark:border-[#666]'>
       <div className='flex items-start'>
         {!showNavbar && <button className='md:hidden block mt-2'><Icon prefix='fas' name='bars' onClick={handleShowNavbar}/></button> }
         <div className='sm:mx-3 my-2'>

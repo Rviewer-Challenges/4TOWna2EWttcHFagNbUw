@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export const HomePage = () => {
   return (
-    <div className='flex flex-1 flex-col justify-center items-center'>
+    <div className='flex flex-1 flex-col justify-center items-center dark:bg-[#1a1a1a] dark:text-white'>
       <Navbar/>
       <Navigator/>
       <Footer/>
