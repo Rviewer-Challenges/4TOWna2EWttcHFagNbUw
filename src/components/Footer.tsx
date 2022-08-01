@@ -3,7 +3,7 @@ import { Logo } from './shared/Logo'
 
 export const Footer = () => {
   return (
-    <div className='md:flex justify-center items-center bg-white bottom-0 py-2 px-5 dark:border-[#666] w-full flex-col border-t dark:bg-[#1a1a1a]'>
+    <div className='md:flex justify-center items-center mt-auto bg-white bottom-0 py-2 px-5 dark:border-[#666] w-full flex-col border-t dark:bg-[#1a1a1a]'>
       <div className='flex justify-center mt-1'>
         <Logo/>
       </div>

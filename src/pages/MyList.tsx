@@ -30,8 +30,8 @@ export const MyList = () => {
   }
 
   return (
-    <div className='flex min-h-screen justify-center p-3'>
-      <section className='divide-y'>
+    <div className='flex justify-center p-3'>
+      <section className='pl-5 divide-y'>
         <SectionTitle title='My List'/>
         {myList.map((notice, key) =>
           (<NoticeMyList key={key} notice={notice} onClick={() => goToNoticeDetails(notice.Title)} handleRemoveNotice={() => handleRemoveNotice(notice)} />))

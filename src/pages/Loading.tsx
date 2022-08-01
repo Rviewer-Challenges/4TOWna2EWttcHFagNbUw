@@ -7,7 +7,7 @@ import { useDarkMode } from '../hooks/useDarkMode'
 import { HomePage } from './HomePage'
 
 export const Loading = () => {
-  const { notices, loadNotices, loadUser } = useContext(Context) as InsideGoalContext
+  const { notices, loadNotices, loadProviders, loadUser } = useContext(Context) as InsideGoalContext
   const [isLoading, setIsLoading] = useState(true)
 
   useDarkMode()
@@ -15,6 +15,7 @@ export const Loading = () => {
   useEffect(() => {
     Promise.all([
       loadNotices(),
+      loadProviders(),
       loadUser()
     ]).then(() => setIsLoading(false)).catch(error => toast.error('error' + error))
   }, [])

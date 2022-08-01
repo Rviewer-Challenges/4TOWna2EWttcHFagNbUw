@@ -6,6 +6,16 @@ import { useHome } from '../hooks/useHome'
 export const Home = () => {
   const { notices, noticeToShow, goToNoticeDetails, addNotice, handleLoadMore } = useHome()
 
+  if (notices.length === 0) {
+    return (
+      <div className='divide-y px-2 min-h-screen dark:divide-[#666]'>
+        <section className='flex flex-col'>
+          <SectionTitle title={'Not notices to show. Subscribe to some RSS Feed'}/>
+        </section>
+      </div>
+    )
+  }
+
   return (
     <div className='divide-y px-2 min-h-screen dark:divide-[#666]'>
       <section className='flex flex-col'>

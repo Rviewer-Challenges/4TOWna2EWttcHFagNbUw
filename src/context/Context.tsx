@@ -1,8 +1,10 @@
 import { createContext, useState } from 'react'
 import { useDarkMode } from '../hooks/useDarkMode'
 import { Notice } from '../interfaces/Notice'
+import { FeedProvider } from '../interfaces/FeedProvider'
 import { User } from '../interfaces/User'
 import { getNews } from '../services/api/news'
+import { getProviders } from '../services/api/providers'
 import { getUser } from '../services/firebase/user'
 import { InsideGoalContext } from './InsideGoalContext'
 
@@ -16,6 +18,7 @@ const USER_DEFAULT_ID = 'LUXaysGcsd1n9oScdhGB'
 
 const Provider = ({ children }: Props) => {
   const [notices, setNotices] = useState<Notice[]>([])
+  const [providers, setProviders] = useState<FeedProvider[]>([])
   const [currentUser, setCurrentUser] = useState<User>({
     id: USER_DEFAULT_ID,
     email: 'spiderman@marvel.com',
@@ -52,8 +55,12 @@ const Provider = ({ children }: Props) => {
     }).catch(error => console.log('error', error))
   }
 
+  const loadProviders = async () => {
+    getProviders().then(providers => setProviders(providers))
+  }
+
   return (
-    <Context.Provider value={{ notices, currentUser, theme, toggleMode, loadNotices, loadUser }}>
+    <Context.Provider value={{ notices, providers, currentUser, theme, toggleMode, loadNotices, loadProviders, loadUser }}>
       {children}
     </Context.Provider>
   )

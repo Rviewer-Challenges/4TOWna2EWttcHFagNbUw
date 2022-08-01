@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Context } from '../context/Context'
 import { InsideGoalContext } from '../context/InsideGoalContext'
 import { useNavigate } from 'react-router-dom'
@@ -7,6 +7,8 @@ import { addNoticeToUserList } from '../services/firebase/noticeList'
 
 export const useHome = () => {
   const { notices, currentUser } = useContext(Context) as InsideGoalContext
+  const [followingNotices, setFollowingNotices] = useState<Notice[]>(notices)
+  console.log('🚀 ~ file: useHome.tsx ~ line 11 ~ useHome ~ followingNotices', followingNotices)
 
   const navigate = useNavigate()
 
@@ -24,8 +26,17 @@ export const useHome = () => {
     addNoticeToUserList({ user: currentUser, notice })
   }
 
+  const filterByFollowingProviders = () => {
+    const followingNotices = notices.filter(notice => currentUser.provider.includes(notice.ProviderID))
+    setFollowingNotices(followingNotices)
+  }
+
+  useEffect(() => {
+    filterByFollowingProviders()
+  }, [currentUser.provider])
+
   return {
-    notices,
+    notices: followingNotices,
     noticeToShow,
     goToNoticeDetails,
     addNotice,
