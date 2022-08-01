@@ -8,7 +8,6 @@ import { addNoticeToUserList } from '../services/firebase/noticeList'
 export const useHome = () => {
   const { notices, currentUser } = useContext(Context) as InsideGoalContext
   const [followingNotices, setFollowingNotices] = useState<Notice[]>(notices)
-  console.log('🚀 ~ file: useHome.tsx ~ line 11 ~ useHome ~ followingNotices', followingNotices)
 
   const navigate = useNavigate()
 

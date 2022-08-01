@@ -46,8 +46,6 @@ export const Providers = () => {
     setMyProviders(providersFormatted)
   }, [currentUser.provider])
 
-  console.log('🚀 ~ file: Providers.tsx ~ line 49 ~ Providers ~ currentUser.provider', currentUser.provider)
-
   return (
     <section className='flex flex-col divide-y px-3'>
       <SectionTitle title='Providers'/>

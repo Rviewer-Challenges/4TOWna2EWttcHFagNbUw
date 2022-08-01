@@ -27,7 +27,7 @@ export const Loading = () => {
   }
 
   return (
-    <div className='flex items-center justify-center mt-5 flex-1 dark:bg-black'>
+    <div className='flex items-center justify-center mt-5 flex-1 dark:bg-black min-h-screen'>
       <Logo/>
     </div>
   )

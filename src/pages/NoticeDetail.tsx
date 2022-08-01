@@ -1,4 +1,6 @@
+import { Logo } from '../components/shared/Logo'
 import { NoticeReference } from '../components/shared/NoticeReference'
+import { SectionTitle } from '../components/shared/SectionTitle'
 import { useNoticeDetail } from '../hooks/useNoticeDetail'
 
 export const NoticeDetail = () => {
@@ -23,6 +25,11 @@ export const NoticeDetail = () => {
   }
 
   return (
-    <div>Not found the notice {title}</div>
+    <div className='flex justify-center divide-y px-2 min-h-screen dark:divide-[#666]'>
+      <section className='flex flex-col items-center'>
+        <Logo/>
+        <SectionTitle title={`Notice ${title} not found.`}/>
+      </section>
+    </div>
   )
 }

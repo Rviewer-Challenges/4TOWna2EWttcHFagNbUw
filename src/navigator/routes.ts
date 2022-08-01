@@ -9,7 +9,7 @@ export const routes:Route[] = [
   { path: '/login', prefix: 'fas', icon: 'list', label: 'Notice', Component: Login },
   { path: '/home', prefix: 'fas', icon: 'house', label: 'Home', Component: Home },
   { path: '/mylist', prefix: 'fas', icon: 'list', label: 'My List', Component: MyList },
-  { path: '/providers', prefix: 'fas', icon: 'list', label: 'Providers', Component: Providers },
+  { path: '/providers', prefix: 'fas', icon: 'rss', label: 'Providers', Component: Providers },
   { path: '/notice/:title', prefix: 'fas', icon: 'list', label: 'Notice', Component: NoticeDetail }
 ]
 

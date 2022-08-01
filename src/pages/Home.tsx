@@ -1,4 +1,5 @@
 import { NewCard } from '../components/NewCard'
+import { Logo } from '../components/shared/Logo'
 import { SectionTitle } from '../components/shared/SectionTitle'
 import { TopNewCard } from '../components/TopNewCard'
 import { useHome } from '../hooks/useHome'
@@ -8,8 +9,9 @@ export const Home = () => {
 
   if (notices.length === 0) {
     return (
-      <div className='divide-y px-2 min-h-screen dark:divide-[#666]'>
-        <section className='flex flex-col'>
+      <div className='flex items-center justify-center divide-y px-2 min-h-screen dark:divide-[#666]'>
+        <section className='flex flex-col items-center'>
+          <Logo/>
           <SectionTitle title={'Not notices to show. Subscribe to some RSS Feed'}/>
         </section>
       </div>

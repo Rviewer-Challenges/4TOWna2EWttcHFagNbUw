@@ -3,12 +3,12 @@ import { Context } from '../../context/Context'
 import { InsideGoalContext } from '../../context/InsideGoalContext'
 import { THEMES } from '../../hooks/useDarkMode'
 import { IconName, IconPrefix, library, SizeProp } from '@fortawesome/fontawesome-svg-core'
-import { faBars, faArrowLeft, faHouse, faList, faUser, faBookmark, faLink, faTrash, faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faArrowLeft, faHouse, faList, faUser, faBookmark, faLink, faTrash, faSun, faMoon, faRss } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin, faGithub, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faBars, faArrowLeft, faHouse, faList, faUser, faBookmark, faLinkedin, faGithub, faInstagram,
-  faTwitter, faLink, faTrash, faSun, faMoon)
+  faTwitter, faLink, faTrash, faSun, faMoon, faRss)
 
 interface Props {
   prefix: IconPrefix

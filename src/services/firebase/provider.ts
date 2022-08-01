@@ -22,5 +22,4 @@ export const removeProviderFromUser = ({ user, provider }: UserProviderProps) =>
   const currentUserCollection = doc(database, USER_COLLECTION, user.id)
   updateDoc(currentUserCollection, { provider: newProviders }).then(() => toast.success('Unsubscribed to the RSS provider')).catch(() => toast.error('Can not unsubscribe to the provider'))
   user.provider = newProviders
-  console.log('🚀 ~ file: provider.ts ~ line 25 ~ removeProviderFromUser ~ user.provider', user.provider)
 }
