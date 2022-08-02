@@ -1,4 +1,5 @@
 # Inside Goal
+A RSS feed about international soccer notices.
 ## Demo
 [Live Demo Inside Goal](https://inside-goal.vercel.app)
 
